@@ -5,7 +5,7 @@ https://docs.microsoft.com/en-us/azure/azure-monitor/insights/containers#install
 
 ## Installation
 
-To install this role locally, simply run ansible-galaxy install git+git@github.com:Innoactive/ansible-innoactive-hub-role.git.
+To install this role locally, simply run `ansible-galaxy install git+git@github.com:Innoactive/ansible-innoactive-hub-role.git`.
 
 ## Requirements
 

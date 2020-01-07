@@ -1,0 +1,18 @@
+---
+- name: Start Microsoft OMS container
+  docker_container:
+    name: omsagent
+    image: microsoft/oms
+    state: started
+    restart_policy: always
+    privileged: yes
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers:/var/lib/docker/containers
+    env:
+      WSID: "{{ azure_log_analytics_workspace_id | mandatory }}"
+      KEY: "{{ azure_log_analytics_primary_key| mandatory }}"
+    published_ports:
+      - 127.0.0.1:25225:25225
+      - 127.0.0.1:25224:25224/udp
+    hostname: "{{ oms_hostname | mandatory }}"

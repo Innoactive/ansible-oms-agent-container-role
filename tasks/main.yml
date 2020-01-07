@@ -11,7 +11,7 @@
       - /var/lib/docker/containers:/var/lib/docker/containers
     env:
       WSID: "{{ azure_log_analytics_workspace_id | mandatory }}"
-      KEY: "{{ azure_log_analytics_primary_key| mandatory }}"
+      KEY: "{{ azure_log_analytics_primary_key | mandatory }}"
     published_ports:
       - 127.0.0.1:25225:25225
       - 127.0.0.1:25224:25224/udp

@@ -1,18 +1,11 @@
 ---
-- name: Start Microsoft OMS container
-  docker_container:
-    name: omsagent
-    image: microsoft/oms
-    state: started
-    restart_policy: always
-    privileged: yes
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/docker/containers:/var/lib/docker/containers
-    env:
-      WSID: "{{ azure_log_analytics_workspace_id | mandatory }}"
-      KEY: "{{ azure_log_analytics_primary_key | mandatory }}"
-    published_ports:
-      - 127.0.0.1:25225:25225
-      - 127.0.0.1:25224:25224/udp
-    hostname: "{{ oms_hostname | mandatory }}"
+# Fix to address issue with oms agent and container monitoring, see:
+# https://github.com/Microsoft/OMS-docker/blob/master/ReleaseNote.md#due-to-the-backend-changes-for-container-monitoring-with-oms-agent-for-linux-and-it-is-a-fresh-install-you-will-need-to-run-this-workaround
+# only required on first-time setups
+- name: Re-onboard OMS Agent workspace to workaround issue https://bit.ly/2t2aNCB
+  when: not oms_agent_installed
+  block:
+    - name: Remove all workspaces
+      command: "{{ oms_agent_path }} -X"
+    - name: Re-onboard workspace
+      command: "{{ oms_agent_path }} -w {{ azure_log_analytics_workspace_id }} -s {{ azure_log_analytics_workspace_primary_key }}"

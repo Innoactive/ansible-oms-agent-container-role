@@ -29,3 +29,9 @@ dependencies:
       - dependencies
       - prerequisites
       - docker
+  - role: svendewindt.omsagentlinux
+    vars:
+      workspace_id: "{{ azure_log_analytics_workspace_id }}"
+      workspace_key: "{{ azure_log_analytics_workspace_primary_key }}"
+    tags:
+      - always

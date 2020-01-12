@@ -23,12 +23,6 @@ galaxy_info:
     - microsoft
 
 dependencies:
-  - role: geerlingguy.docker
-    become: true
-    tags:
-      - dependencies
-      - prerequisites
-      - docker
   - role: svendewindt.omsagentlinux
     vars:
       workspace_id: "{{ azure_log_analytics_workspace_id }}"

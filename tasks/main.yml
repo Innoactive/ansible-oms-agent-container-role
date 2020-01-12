@@ -3,7 +3,7 @@
 # https://github.com/Microsoft/OMS-docker/blob/master/ReleaseNote.md#due-to-the-backend-changes-for-container-monitoring-with-oms-agent-for-linux-and-it-is-a-fresh-install-you-will-need-to-run-this-workaround
 # only required on first-time setups
 - name: Re-onboard OMS Agent workspace to workaround issue https://bit.ly/2t2aNCB
-  when: not oms_agent_installed
+  when: not oms_agent_installed.stat.exists
   block:
     - name: Remove all workspaces
       command: "{{ oms_agent_path }} -X"

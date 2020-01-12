@@ -1,7 +1,9 @@
 # Role Name
 
-Installs the Microsoft Operations Management Suite Agent as a docker container as described in
-https://docs.microsoft.com/en-us/azure/azure-monitor/insights/containers#install-and-configure-linux-container-hosts.
+Installs the Microsoft Operations Management Suite Agent with support for container monitoring. This is effectively a
+wrapper around the excellent [svendewindt.omsagentlinux-role](https://github.com/svendewindt/ansible-role-omsagent-linux)
+which installs the oms-agent for linux. Since we also want to monitor docker containers though, we need to apply the
+workaround stated in the [release notes of the docker-based oms-agent](https://github.com/Microsoft/OMS-docker/blob/master/ReleaseNote.md#due-to-the-backend-changes-for-container-monitoring-with-oms-agent-for-linux-and-it-is-a-fresh-install-you-will-need-to-run-this-workaround).
 
 ## Installation
 
@@ -13,24 +15,12 @@ The host this role is applied to needs to be running docker; to meet this requir
 
 ## Role Variables
 
-    azure_log_analytics_workspace_id:
-
-The workspace id of the Azure Log Analytics workspace.
-
-    azure_log_analytics_workspace_primary_key:
-
-The primary key to authenticate with the Azure Log Analytics workspace.
+Since this role is nothing but a thin wrapper around [svendewindt.omsagentlinux](https://github.com/svendewindt/ansible-role-omsagent-linux)
+please refer to the [docs there with respect to the available / required variables.](https://github.com/svendewindt/ansible-role-omsagent-linux#role-variables)
 
 ## Example Playbook
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      vars:
-        azure_log_analytics_workspace_id: your-azure-log-analytics-workspace-id
-        azure_log_analytics_primary_key: your-azure-log-analytics-primary-key
-      roles:
-         - ansible-oms-agent-container-role
+See [svendewindt/ansible-oms-agent-role#example-playbook](https://github.com/svendewindt/ansible-role-omsagent-linux#example-playbook).
 
 ## License
 

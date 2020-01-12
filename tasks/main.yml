@@ -8,4 +8,4 @@
     - name: Remove all workspaces
       command: "{{ oms_agent_path }} -X"
     - name: Re-onboard workspace
-      command: "{{ oms_agent_path }} -w {{ azure_log_analytics_workspace_id }} -s {{ azure_log_analytics_workspace_primary_key }}"
+      command: "{{ oms_agent_path }} -w {{ workspace_id }} -s {{ workspace_key }}"

@@ -22,7 +22,7 @@
       command: /tmp/onboard_agent.sh
 
     - name: Install deamon
-      command: "/opt/microsoft/omsagent/bin/service_control restart {{ workspace_id }}"
+      command: "/opt/microsoft/omsagent/bin/service_control restart"
 
     - name: Remove OMS agent installer
       file: path=/tmp/onboard_agent.sh state=absent

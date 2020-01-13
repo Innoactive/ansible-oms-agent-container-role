@@ -25,6 +25,6 @@ galaxy_info:
     - docker
 
 dependencies:
+  # define that we need the role here (to force automatic installation) but do not run it automatically (we'll import it)
   - role: svendewindt.omsagentlinux
-    tags:
-      - always
+    when: no

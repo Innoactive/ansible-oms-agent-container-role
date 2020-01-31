@@ -1,4 +1,4 @@
-# Role Name
+# OMS-Agent for Linux
 
 Installs the Microsoft Operations Management Suite Agent with support for container monitoring. This is largely based on
 the excellent [svendewindt.omsagentlinux-role](https://github.com/svendewindt/ansible-role-omsagent-linux)
@@ -7,7 +7,7 @@ workaround stated in the [release notes of the docker-based oms-agent](https://g
 
 ## Installation
 
-To install this role locally, simply run `ansible-galaxy install git+git@github.com:Innoactive/ansible-innoactive-hub-role.git`.
+To install this role locally, simply run `ansible-galaxy install git+https://github.com/Innoactive/ansible-oms-agent-for-linux.git,master`.
 
 ## Requirements
 
